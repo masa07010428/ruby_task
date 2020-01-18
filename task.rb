@@ -176,6 +176,21 @@ end
 
 class UserQ17
   # 以下に回答を記載
+  attr_accessor :name
+  attr_accessor :age
+  attr_accessor :gender
+  attr_accessor :admin
+  def initialize(name:, age:, gender:, admin:)
+    self.name = name
+    self.age = age
+    self.gender = gender
+    self.admin = admin
+  end
+
+  def info
+    
+    return puts "名前 : #{self.name}\n年齢 : #{self.age}\n性別 : #{self.gender}\n管理者権限 : #{self.admin}"
+  end
 
 end
 
