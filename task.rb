@@ -57,7 +57,7 @@ def q7
   array = ["1", "2", "3", "4", "5"]
 
   # 以下に回答を記載
-  p array.map {|s| s.to_i}
+  p array.map! {|s| s.to_i}
 end
 
 def q8
@@ -85,25 +85,33 @@ def q10
   foods = %w(いか たこ うに しゃけ うにぎり うに軍艦 うに丼)
 
   # 以下に回答を記載
-  if foods.include?("うに")
-    puts "好物です"
-  else
-    puts "まぁまぁ好きです"
-  end
+  foods.each {|food|
+    if food.include?("うに")
+      puts "#{food}は、好物です"
+    else
+      puts "#{food}は、まぁまぁ好きです"
+    end
+  }
 end
+
 
 def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
+  sports2 = sports.flatten.uniq
 
+  puts "ユーザーの趣味一覧"
+  sports2.each.with_index(1) {|sport,i| 
+    puts "No.#{i} #{sport}"  
+  }
 end
 
 def q12
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
-
+  puts data[:user][:name]
 end
 
 def q13
@@ -111,14 +119,16 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-
+  user_data[:age] = 32
+  user_data[:address] = "沖縄"
+  puts user_data
 end
 
 def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
-
+  p data.keys
 end
 
 def q15
@@ -126,7 +136,17 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
+  if data1.keys.include?(:age)
+    puts "OK"
+  else
+    puts "NG"  
+  end
 
+  if data2.keys.include?(:age)
+    puts "OK"
+  else
+    puts "NG"  
+  end
 end
 
 def q16
