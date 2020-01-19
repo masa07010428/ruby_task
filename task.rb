@@ -187,7 +187,6 @@ class UserQ17
     puts "名前 : #{@name}"
     puts "年齢 : #{@age}"
     puts "性別 : #{@gender}"
-    # puts @admin == true ? "管理者権限 : 有り" : "管理者権限 : 無し"
     puts "管理者権限 : #{@admin == true ? "有り" : "無し"}"
   end
 end
