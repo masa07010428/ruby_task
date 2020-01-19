@@ -176,22 +176,20 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  attr_accessor :name
-  attr_accessor :age
-  attr_accessor :gender
-  attr_accessor :admin
   def initialize(name:, age:, gender:, admin:)
-    self.name = name
-    self.age = age
-    self.gender = gender
-    self.admin = admin
+    @name = name
+    @age = age
+    @gender = gender
+    @admin = admin
   end
 
   def info
-    
-    return puts "名前 : #{self.name}\n年齢 : #{self.age}\n性別 : #{self.gender}\n管理者権限 : #{self.admin}"
+    puts "名前 : #{@name}"
+    puts "年齢 : #{@age}"
+    puts "性別 : #{@gender}"
+    # puts @admin == true ? "管理者権限 : 有り" : "管理者権限 : 無し"
+    puts "管理者権限 : #{@admin == true ? "有り" : "無し"}"
   end
-
 end
 
 def q17
