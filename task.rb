@@ -176,18 +176,38 @@ end
 
 class UserQ17
   # 以下に回答を記載
-  def initialize(name:, age:, gender:, admin:)
-    @name = name
-    @age = age
-    @gender = gender
-    @admin = admin
+  
+  # 修正前
+  # def initialize(name:, age:, gender:, admin:)
+  #   @name = name
+  #   @age = age
+  #   @gender = gender
+  #   @admin = admin
+  
+  # 修正後
+  def initialize(profile)
+    @name = profile[:name]
+    @age = profile[:age]
+    @gender = profile[:gender]
+    @admin = profile[:admin]
   end
 
+  # 修正前
+  # def info
+  #   puts "名前 : #{@name}"
+  #   puts "年齢 : #{@age}"
+  #   puts "性別 : #{@gender}"
+  #   puts "管理者権限 : #{@admin == true ? "有り" : "無し"}"
+  # end
+
+  # 修正後
   def info
-    puts "名前 : #{@name}"
-    puts "年齢 : #{@age}"
-    puts "性別 : #{@gender}"
-    puts "管理者権限 : #{@admin == true ? "有り" : "無し"}"
+    puts <<~E0S
+    "名前 : #{@name}"
+    "年齢 : #{@age}"
+    "性別 : #{@gender}"
+    "管理者権限 : #{@admin == true ? "有り" : "無し"}"
+    E0S
   end
 end
 
@@ -203,13 +223,24 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(profile)
+    @name = profile[:name]
+    @age = profile[:age]
+  end
+  def introduce
+    if @age < 20
+      puts "はいさいまいど〜、#{@name}です！！！"
+    else
+      puts "こんにちは、#{@name}と申します。宜しくお願いいたします。"
+    end
+  end
 
 end
 
-def q18
+def q18_
   # ここは変更しないで下さい
   user1 = UserQ18.new(name: "あじー", age: 32)
-  user2 = UserQ18.new(name: "ゆたぼん", age: 10)
+  user2 = UserQ18.new(name: "ゆたぼん", age: 10) 
 
   puts user1.introduce
   puts user2.introduce
@@ -219,7 +250,10 @@ class Item
   # 以下を修正して下さい
 
   def initialize(name)
-    @name = name
+    @name = name.values
+  end
+  def name
+    @name
   end
 end
 
@@ -231,12 +265,37 @@ end
 
 class UserQ20
   # 以下に回答を記載
-
+  def initialize(profile)
+    @name = profile[:name]
+    @age = profile[:age]
+  end
+  def name
+    @name
+  end
+  def age
+    @age
+  end
 end
 
 class Zoo
   # 以下に回答を記載
-
+  def initialize(zoo)
+    @infant = zoo[:entry_fee][:infant]
+    @children = zoo[:entry_fee][:children]
+    @adult = zoo[:entry_fee][:adult]
+    @senior = zoo[:entry_fee][:senior]
+  end
+  def info_entry_fee(user)
+    if user.age >= 65 && user.age <= 120
+      puts "#{user.name}さんの入場料金は#{@senior}円です。"
+    elsif user.age >= 13
+      puts "#{user.name}さんの入場料金は#{@adult}円です。" 
+    elsif user.age >= 6
+      puts "#{user.name}さんの入場料金は#{@children}円です。" 
+    elsif user.age >= 0
+      puts "#{user.name}さんの入場料金は#{@infant}円です。" 
+    end
+  end
 end
 
 
