@@ -256,9 +256,10 @@ class Item
     @name = name
   end
   
-  def name
-    @name
-  end
+  # def name
+  #   @name
+  # end
+  attr_reader :name
 end
 
 def q19
@@ -305,16 +306,18 @@ class Zoo
     # elsif user.age >= 0
     #   puts "#{user.name}さんの入場料金は#{@infant}円です。" 
     # end
+    fee = 
     case user.age
     when 0..5
-      puts "#{user.name}さんの入場料金は#{@infant}円です。"
+      @infant
     when 6..12
-      puts "#{user.name}さんの入場料金は#{@children}円です。"
+      @children
     when 13..64
-      puts "#{user.name}さんの入場料金は#{@adult}円です。"
+      @adult
     when 65..120
-      puts "#{user.name}さんの入場料金は#{@senior}円です。"
+      @senior
     end
+    puts "#{user.name}さんの入場料は#{fee}円です。"
   end
 end
 
