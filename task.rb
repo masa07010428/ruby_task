@@ -306,7 +306,19 @@ class Zoo
     # elsif user.age >= 0
     #   puts "#{user.name}さんの入場料金は#{@infant}円です。" 
     # end
-    fee = 
+
+    # case user.age
+    # when 0..5
+    #   puts "#{user.name}さんの入場料金は#{@infant}円です。"
+    # when 6..12
+    #   puts "#{user.name}さんの入場料金は#{@children}円です。"
+    # when 13..64
+    #   puts "#{user.name}さんの入場料金は#{@adult}円です。"
+    # when 65..120
+    #   puts "#{user.name}さんの入場料金は#{@senior}円です。"
+    # end
+
+    fee =
     case user.age
     when 0..5
       @infant
@@ -315,9 +327,9 @@ class Zoo
     when 13..64
       @adult
     when 65..120
-      @senior
+     @senior
     end
-    puts "#{user.name}さんの入場料は#{fee}円です。"
+    puts "#{user.name}さんの入場料金は#{fee}円です。" 
   end
 end
 
